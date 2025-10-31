@@ -10,8 +10,8 @@
 }
 
 body {
-  padding: 0!important;
-  margin: 0!important;
+  padding: 0 !important;
+  margin: 0 !important;
 }
 
 .reg-shell {
@@ -66,14 +66,16 @@ body {
   .title-card {
     width: 100%;
     font-family: Nexa-Bold, Arial, sans-serif;
-    font-size: clamp(1.5rem, 1.2rem + 1vw, 2rem); /* ~22–32px */
+    font-size: clamp(1.5rem, 1.2rem + 1vw, 2rem);
+    /* ~22–32px */
     margin-bottom: 0.25rem;
   }
 
   .subtitle-card {
     width: 100%;
     font-family: Nexa-Light, Arial, sans-serif;
-    font-size: clamp(1rem, 0.8rem + 0.5vw, 1.25rem); /* ~16–20px */
+    font-size: clamp(1rem, 0.8rem + 0.5vw, 1.25rem);
+    /* ~16–20px */
     color: #000000;
     margin-top: 1rem;
   }
@@ -109,12 +111,15 @@ body {
   width: min(100%, 980px);
   margin-inline: auto;
 }
+
 /* Contenedor con el mismo ancho que .role-card y .forms-area */
 .actions-row {
   //width: min(100%, 980px);
-  margin: 8px auto 0;       /* centra el contenedor como la card */
+  margin: 8px auto 0;
+  /* centra el contenedor como la card */
   display: flex;
-  justify-content: flex-end; /* botón a la derecha */
+  justify-content: flex-end;
+  /* botón a la derecha */
 }
 
 /* Botón minimal y consistente con la UI */
@@ -122,9 +127,11 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  text-transform: none;     /* no todo en mayúsculas */
+  text-transform: none;
+  /* no todo en mayúsculas */
   font-weight: 500;
-  border-radius: 10px;      /* mismo radio suave */
+  border-radius: 10px;
+  /* mismo radio suave */
   padding-inline: 14px;
 }
 
@@ -140,11 +147,14 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  border: none;
+  background: transparent;
+  cursor: pointer;
 }
 
 .back-icon {
-  width: auto!important;
-  height: auto!important;
+  width: auto !important;
+  height: auto !important;
   font-size: 1.9rem;
   color: #0092B8;
 }
@@ -154,21 +164,25 @@ body {
    ========================= */
 
 /* Estilo para el icono dentro del radio button */
-.mat-icon{
+.mat-icon {
   width: 100%;
   height: 100%;
 }
 
 ::ng-deep .mat-mdc-radio-button mat-icon {
   text-align: center;
-  font-size: 2.5rem; /* Tamaño del ícono */
-  color: #0092B8; /* Color del ícono */
-  transition: color 0.3s ease; /* Suaviza el cambio de color */
+  font-size: 2.5rem;
+  /* Tamaño del ícono */
+  color: #0092B8;
+  /* Color del ícono */
+  transition: color 0.3s ease;
+  /* Suaviza el cambio de color */
 }
 
 /* Cambio de color del ícono cuando está seleccionado */
 ::ng-deep .mat-mdc-radio-button:hover mat-icon {
-  color: #0092B8; /* Color más oscuro en el ícono cuando se pasa el ratón */
+  color: #0092B8;
+  /* Color más oscuro en el ícono cuando se pasa el ratón */
 }
 
 ::ng-deep .mat-mdc-radio-button .mdc-form-field {
@@ -194,7 +208,7 @@ body {
   width: auto;
   height: auto;
   cursor: pointer;
-  will-change: opacity,transform,border-color,color;
+  will-change: opacity, transform, border-color, color;
 }
 
 
@@ -203,16 +217,19 @@ body {
    ========================= */
 
 @media (max-width: 700px) {
+
   //Este selector me ayuda a modificar el ancho del label del radio button
   ::ng-deep .mdc-label {
     width: 180px;
   }
+
   .role-card {
     padding: 15px;
   }
 
   .role-row {
-    flex-direction: row;  /* Alinea los radio buttons verticalmente */
+    flex-direction: row;
+    /* Alinea los radio buttons verticalmente */
     gap: 10px;
   }
 
@@ -224,14 +241,16 @@ body {
   /* Títulos centrados y con más espacio */
   .title-perfil {
     text-align: center;
-    font-size: clamp(1.5rem, 1.2rem + 1vw, 2rem); /* ~22–32px */
+    font-size: clamp(1.5rem, 1.2rem + 1vw, 2rem);
+    /* ~22–32px */
     line-height: 1.2;
     margin-bottom: 0.5rem;
   }
 
   .title-table {
     text-align: center;
-    font-size: clamp(1.75rem, 1.3rem + 1.3vw, 2.25rem); /* ~24–36px */
+    font-size: clamp(1.75rem, 1.3rem + 1.3vw, 2.25rem);
+    /* ~24–36px */
     line-height: 1.25;
     margin-top: 0.5rem;
   }
