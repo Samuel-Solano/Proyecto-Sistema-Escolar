@@ -5,17 +5,14 @@ import { FacadeService } from 'src/app/services/facade.service';
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.scss']
+  styleUrls: ['./sidebar.component.scss'],
 })
 export class SidebarComponent implements OnInit {
   mobileOpen = false;
   isMobileView = window.innerWidth < 900;
   userRole: string = '';
 
-  constructor(
-    private router: Router,
-    private facadeService: FacadeService
-  ) { }
+  constructor(private router: Router, private facadeService: FacadeService) {}
 
   ngOnInit(): void {
     this.userRole = this.facadeService.getUserGroup();

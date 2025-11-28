@@ -5,42 +5,41 @@ import { FacadeService } from 'src/app/services/facade.service';
 @Component({
   selector: 'app-navbar-user',
   templateUrl: './navbar-user.component.html',
-  styleUrls: ['./navbar-user.component.scss']
+  styleUrls: ['./navbar-user.component.scss'],
 })
 export class NavbarUserComponent implements OnInit {
-
   public expandedMenu: string | null = null;
-	public userInitial: string = '';
-	public isMobileView: boolean = window.innerWidth <= 992;
-	public showUserMenu: boolean = false;
-	public mobileOpen: boolean = false;
-	public userRole: string = '';
+  public userInitial: string = '';
+  public isMobileView: boolean = window.innerWidth <= 992;
+  public showUserMenu: boolean = false;
+  public mobileOpen: boolean = false;
+  public userRole: string = '';
 
   // Estas variables se utilizarán por si se habilita el tema oscuro
   paletteMode: 'light' | 'dark' = 'light';
-	colorPalettes = {
-			light: {
-				'--background-main': '#f4f7fb',
-				'--sidebar-bg': '#23395d',
-				'--navbar-bg': '#fff',
-				'--text-main': '#222',
-				'--table-bg': '#fff',
-				'--table-header-bg': '#cfe2ff',
-			},
-			dark: {
-				'--background-main': '#181a1b',
-				'--sidebar-bg': '#1a2636',
-				'--navbar-bg': '#222',
-				'--text-main': '#e4ecfa',
-				'--table-bg': '#222',
-				'--table-header-bg': '#30507a',
-			}
-	};
+  colorPalettes = {
+    light: {
+      '--background-main': '#f4f7fb',
+      '--sidebar-bg': '#23395d',
+      '--navbar-bg': '#fff',
+      '--text-main': '#222',
+      '--table-bg': '#fff',
+      '--table-header-bg': '#cfe2ff',
+    },
+    dark: {
+      '--background-main': '#181a1b',
+      '--sidebar-bg': '#1a2636',
+      '--navbar-bg': '#222',
+      '--text-main': '#e4ecfa',
+      '--table-bg': '#222',
+      '--table-header-bg': '#30507a',
+    },
+  };
 
   togglePalette() {
     this.paletteMode = this.paletteMode === 'light' ? 'dark' : 'light';
     const palette = this.colorPalettes[this.paletteMode];
-    Object.keys(palette).forEach(key => {
+    Object.keys(palette).forEach((key) => {
       document.documentElement.style.setProperty(key, palette[key]);
     });
   }
@@ -63,14 +62,12 @@ export class NavbarUserComponent implements OnInit {
     // Siempre inicia con la paleta blanca
     this.paletteMode = 'light';
     const palette = this.colorPalettes['light'];
-    Object.keys(palette).forEach(key => {
+    Object.keys(palette).forEach((key) => {
       document.documentElement.style.setProperty(key, palette[key]);
     });
   }
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void {}
 
   @HostListener('window:resize')
   onResize() {
@@ -148,5 +145,4 @@ export class NavbarUserComponent implements OnInit {
   canSeeRegisterItem(): boolean {
     return this.isAdmin() || this.isTeacher();
   }
-
 }

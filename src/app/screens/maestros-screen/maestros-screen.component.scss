@@ -9,7 +9,7 @@
     margin-left: 0;
   }
 }
-.wrapper{
+.wrapper {
   height: auto;
 }
 
@@ -47,7 +47,7 @@
   margin: 0 auto;
   background: #fff;
   border-radius: 12px;
-  box-shadow: 0 4px 24px 0 rgba(0,0,0,0.07);
+  box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.07);
 }
 /* =========================
    Alineación del texto dentro del alert
@@ -57,20 +57,20 @@
   margin: 0 auto; /* Asegura que el texto esté completamente centrado */
 }
 
-.alert-warning{
+.alert-warning {
   font-family: Nexa;
   font-size: 16px;
-  color: #231F20;
+  color: #231f20;
   text-align: center;
-  background: #FFF3CD;
+  background: #fff3cd;
   border-radius: 12px;
-  box-shadow: 0 4px 24px 0 rgba(0,0,0,0.07);
+  box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.07);
   width: 100%;
   padding: 1rem 1.5rem;
   margin-bottom: 2rem;
 }
 
-.title-table{
+.title-table {
   margin-left: 3rem;
   font-size: 28px;
   text-align: left;
@@ -90,7 +90,7 @@
   margin: 0 auto;
   background: var(--table-bg, #fff);
   border-radius: 12px;
-  box-shadow: 0 4px 24px 0 rgba(0,0,0,0.07);
+  box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.07);
   display: flex;
   flex-direction: column;
 }
@@ -101,33 +101,33 @@ table {
   padding-bottom: 1.5rem;
 }
 
-::ng-deep .mat-mdc-table{
-  table-layout: fixed!important;
+::ng-deep .mat-mdc-table {
+  table-layout: fixed !important;
 }
 
 // Use palette variables for table text and header
 .mat-mdc-header-cell {
-  border-bottom-color: var(--table-header-border, #231F20);
-  font-family: Nexa-Bold!important;
+  border-bottom-color: var(--table-header-border, #231f20);
+  font-family: Nexa-Bold !important;
   font-size: 18px;
   text-align: left;
   letter-spacing: 0px;
   opacity: 1;
-  color: var(--text-main, #fff)!important;
+  color: var(--text-main, #fff) !important;
 }
 
 .mat-mdc-cell {
   text-align: left;
-  font-family: Nexa!important;
-  font-size: 15px!important;
-  letter-spacing: 0px!important;
-  color: var(--text-main, #fff)!important;
-  opacity: 1!important;
+  font-family: Nexa !important;
+  font-size: 15px !important;
+  letter-spacing: 0px !important;
+  color: var(--text-main, #fff) !important;
+  opacity: 1 !important;
 }
 
 /* Acciones */
 .td-editar {
-  color: #0092B8 !important;
+  color: #0092b8 !important;
   cursor: pointer !important;
   font-size: 20px !important;
   text-align: center;
@@ -138,7 +138,7 @@ table {
   text-align: center;
 }
 .td-eliminar {
-  color: #E84150 !important;
+  color: #e84150 !important;
   cursor: pointer !important;
   font-size: 20px !important;
   text-align: center;
@@ -155,10 +155,10 @@ table {
    ========================= */
 .title-perfil,
 .title-table {
-  display: block;            /* nos permite controlar separación con margin */
+  display: block; /* nos permite controlar separación con margin */
   line-height: 1.1;
-  text-wrap: balance;        /* evita líneas huérfanas (soporte moderno) */
-  overflow-wrap: anywhere;   /* defensa ante nombres muy largos */
+  text-wrap: balance; /* evita líneas huérfanas (soporte moderno) */
+  overflow-wrap: anywhere; /* defensa ante nombres muy largos */
   letter-spacing: 0;
   text-transform: capitalize;
   opacity: 1;
@@ -170,7 +170,7 @@ table {
   margin-left: 3rem;
   font-size: clamp(1.375rem, 1.1rem + 1.2vw, 2.25rem); /* ~22–36px */
   text-align: left;
-  color: #231F20;
+  color: #231f20;
 }
 
 /* Título de la card (alerta) */
@@ -178,7 +178,7 @@ table {
   margin-left: 3rem;
   font-size: clamp(1.125rem, 0.95rem + 0.9vw, 1.875rem); /* ~18–30px */
   text-align: center;
-  color: #231F20;
+  color: #231f20;
 }
 
 /* =========================
@@ -200,17 +200,19 @@ table {
    =============================================================== */
 @media (min-width: 576px) and (max-width: 699px) {
   /* Suprimimos los saltos <br> que generan separación innecesaria */
-  .row.mt-5.mb-5 > .col-12 br { display: none; }
+  .row.mt-5.mb-5 > .col-12 br {
+    display: none;
+  }
 
   .title-perfil,
   .title-table {
     text-align: left;
-    margin-left: 1.5rem;     /* más ancho útil en esta franja */
+    margin-left: 1.5rem; /* más ancho útil en esta franja */
   }
 
   /* Saludo */
   .row .col-12 .title-perfil:first-of-type {
-    font-size: clamp(1.25rem, 1.0rem + 1.1vw, 1.9rem);
+    font-size: clamp(1.25rem, 1rem + 1.1vw, 1.9rem);
     line-height: 1.15;
     margin-bottom: 0.4rem;
   }
@@ -220,7 +222,7 @@ table {
     text-align: left;
     font-size: clamp(1.2rem, 0.95rem + 1vw, 1.7rem);
     line-height: 1.15;
-    margin-top: 0.25rem;     /* separación controlada entre títulos */
+    margin-top: 0.25rem; /* separación controlada entre títulos */
   }
 
   /* Anula la separación extra del contenedor Bootstrap */
@@ -229,21 +231,29 @@ table {
     margin-bottom: 0.75rem !important;
   }
 
-  .alert .title-table { margin-left: 0; }
+  .alert .title-table {
+    margin-left: 0;
+  }
 }
 
 /* ===============================================================
    “Bisagra” 700–740 px — IZQUIERDA y sin salto visual (caso 700 px)
    =============================================================== */
 @media (min-width: 700px) and (max-width: 740px) {
-  .row.mt-5.mb-5 > .col-12 br { display: none; } /* elimina los 2 <br> */
+  .row.mt-5.mb-5 > .col-12 br {
+    display: none;
+  } /* elimina los 2 <br> */
   .title-perfil,
   .title-table {
     text-align: left;
     margin-left: 3rem;
   }
-  .row .col-12 .title-perfil:first-of-type { margin-bottom: 0.4rem; }
-  .row .col-12 .title-perfil:last-of-type  { margin-top: 0.25rem; }
+  .row .col-12 .title-perfil:first-of-type {
+    margin-bottom: 0.4rem;
+  }
+  .row .col-12 .title-perfil:last-of-type {
+    margin-top: 0.25rem;
+  }
 }
 
 /* =========================
@@ -270,7 +280,9 @@ table {
    =========================================== */
 @media (max-width: 575px) {
   /* Quitamos los <br> para controlar el gap con margin */
-  .row.mt-5.mb-5 > .col-12 br { display: none; }
+  .row.mt-5.mb-5 > .col-12 br {
+    display: none;
+  }
 
   .title-perfil,
   .title-table {
@@ -280,16 +292,16 @@ table {
 
   /* Saludo: centrado, un poco mayor */
   .row .col-12 .title-perfil:first-of-type {
-    font-size: clamp(1.35rem, 1.1rem + 1.6vw, 2rem);   /* ~22–32px */
+    font-size: clamp(1.35rem, 1.1rem + 1.6vw, 2rem); /* ~22–32px */
     line-height: 1.15;
-    margin-bottom: 0.35rem;                            /* poco espacio */
+    margin-bottom: 0.35rem; /* poco espacio */
   }
 
   /* Rol “Administrador”: centrado y algo mayor */
   .row .col-12 .title-perfil:last-of-type {
     font-size: clamp(1.4rem, 1.15rem + 1.7vw, 2.1rem); /* ~22–33px */
     line-height: 1.15;
-    margin-top: 0.25rem;                               /* muy pegado al saludo */
+    margin-top: 0.25rem; /* muy pegado al saludo */
   }
 
   /* Compacta los espacios del bloque contenedor */
@@ -305,9 +317,16 @@ table {
   }
 
   /* Tabla legible en pantallas chicas */
-  .mat-mdc-header-cell { font-size: 16px; }
-  .mat-mdc-cell        { font-size: 14px !important; line-height: 1.25; }
-  .table-responsive    { -webkit-overflow-scrolling: touch; }
+  .mat-mdc-header-cell {
+    font-size: 16px;
+  }
+  .mat-mdc-cell {
+    font-size: 14px !important;
+    line-height: 1.25;
+  }
+  .table-responsive {
+    -webkit-overflow-scrolling: touch;
+  }
 }
 
 /* =========================

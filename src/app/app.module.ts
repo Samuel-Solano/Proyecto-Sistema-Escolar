@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginScreenComponent } from './screens/login-screen/login-screen.component';
@@ -16,18 +15,24 @@ import { RegistroAlumnosComponent } from './partials/registro-alumnos/registro-a
 import { RegistroMaestrosComponent } from './partials/registro-maestros/registro-maestros.component';
 
 //Angular material
-import {MatCardModule} from '@angular/material/card';
-import {MatIconModule} from '@angular/material/icon';
-import {MatRadioModule} from '@angular/material/radio';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
-import {MatCheckboxModule} from '@angular/material/checkbox';
-import {MatSelectModule} from '@angular/material/select';
-import {MatTableModule} from '@angular/material/table';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatSelectModule } from '@angular/material/select';
+import { MatTableModule } from '@angular/material/table';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatSortModule } from '@angular/material/sort';
+
 // Paginación
-import {MatPaginatorIntl, MatPaginatorModule} from '@angular/material/paginator';
+import {
+  MatPaginatorIntl,
+  MatPaginatorModule,
+} from '@angular/material/paginator';
 //Para el paginator en español
 import { getSpanishPaginatorIntl } from './shared/spanish-paginator-intl';
 
@@ -46,6 +51,8 @@ import { MaestrosScreenComponent } from './screens/maestros-screen/maestros-scre
 import { NavbarUserComponent } from './partials/navbar-user/navbar-user.component';
 import { SidebarComponent } from './partials/sidebar/sidebar.component';
 import { EliminarUserModalComponent } from './modals/eliminar-user-modal/eliminar-user-modal.component';
+import { GraficasScreenComponent } from './screens/graficas-screen/graficas-screen.component';
+import { NgChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -61,9 +68,10 @@ import { EliminarUserModalComponent } from './modals/eliminar-user-modal/elimina
     AdminScreenComponent,
     AlumnosScreenComponent,
     MaestrosScreenComponent,
+    EliminarUserModalComponent,
     NavbarUserComponent,
     SidebarComponent,
-    EliminarUserModalComponent
+    GraficasScreenComponent,
   ],
   imports: [
     BrowserModule,
@@ -83,14 +91,17 @@ import { EliminarUserModalComponent } from './modals/eliminar-user-modal/elimina
     MatSelectModule,
     MatSidenavModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatDialogModule,
+    MatSortModule,
+    NgChartsModule,
   ],
   providers: [
     CookieService,
     { provide: MAT_DATE_LOCALE, useValue: 'es-MX' },
     { provide: MatPaginatorIntl, useValue: getSpanishPaginatorIntl() },
-    provideNgxMask()
+    provideNgxMask(),
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
