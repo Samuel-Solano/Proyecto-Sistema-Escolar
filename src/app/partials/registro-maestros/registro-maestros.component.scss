@@ -41,7 +41,7 @@
   text-align: left;
   font-family: Nexa-Bold;
   letter-spacing: 2px;
-  color: #231F20;
+  color: #231f20;
   text-transform: capitalize;
   opacity: 1;
   white-space: nowrap; /* Evita que se divida en dos líneas */
@@ -53,7 +53,7 @@
   text-align: left;
   font-family: Nexa;
   letter-spacing: 2px;
-  color: #231F20;
+  color: #231f20;
   opacity: 1;
 }
 
@@ -91,8 +91,8 @@ mat-form-field {
 .btn-primary {
   width: 208px;
   height: 48px;
-  background-color: #0092B8 !important;
-  border-color: #0092B8 !important;
+  background-color: #0092b8 !important;
+  border-color: #0092b8 !important;
   border-radius: 8px !important;
   opacity: 1;
   text-align: center;
@@ -100,7 +100,7 @@ mat-form-field {
   font-size: 16px;
   font-weight: bold;
   letter-spacing: 0px;
-  color: #FFFFFF;
+  color: #ffffff;
   opacity: 1;
 }
 
@@ -121,7 +121,7 @@ mat-form-field {
   font-size: 16px;
   font-weight: bold;
   letter-spacing: 0px;
-  color: #FFFFFF;
+  color: #ffffff;
   opacity: 1;
 }
 
@@ -137,13 +137,13 @@ mat-form-field {
 /* Cambiar el color de fondo y borde cuando el checkbox está seleccionado */
 ::ng-deep .mat-mdc-checkbox.mat-mdc-checkbox-checked .mdc-checkbox__background,
 ::ng-deep .mat-mdc-checkbox.mat-mdc-checkbox-checked .mdc-checkbox__ripple {
-  background-color: #0092B8 !important; /* Fondo azul cuando está seleccionado */
-  border-color: #0092B8 !important; /* Borde azul cuando está seleccionado */
+  background-color: #0092b8 !important; /* Fondo azul cuando está seleccionado */
+  border-color: #0092b8 !important; /* Borde azul cuando está seleccionado */
 }
 
 /* Cambiar el color de la caja de verificación (cuando está en focus) */
 ::ng-deep .mat-mdc-checkbox:focus .mdc-checkbox__background {
-  border-color: #1565C0 !important; /* Color del borde cuando el checkbox tiene focus */
+  border-color: #1565c0 !important; /* Color del borde cuando el checkbox tiene focus */
 }
 
 /* Aumentar el tamaño del checkbox */
@@ -166,7 +166,7 @@ mat-form-field {
 .d-checkbox-nombre {
   margin-top: 0.4rem;
   font-size: 1rem; /* Aumentar el tamaño de la fuente */
-  color: #231F20; /* Color del texto */
+  color: #231f20; /* Color del texto */
   font-weight: 500;
   transition: color 0.3s ease; /* Suaviza el cambio de color */
 }
@@ -178,7 +178,11 @@ mat-form-field {
 /* Título del formulario (en móvil) */
 @media (max-width: 700px) {
   .title-user {
-    font-size: clamp(1.5rem, 1.2rem + 1vw, 2rem); /* Asegura que el tamaño sea adecuado */
+    font-size: clamp(
+      1.5rem,
+      1.2rem + 1vw,
+      2rem
+    ); /* Asegura que el tamaño sea adecuado */
     line-height: 1.2;
     margin-bottom: 0.5rem;
     text-align: center; /* Centrado en dispositivos móviles */
@@ -203,7 +207,8 @@ mat-form-field {
   }
 
   /* Ajuste para los botones */
-  .btn-primary, .btn-danger {
+  .btn-primary,
+  .btn-danger {
     width: 100%; /* Ancho completo para los botones en móviles */
     font-size: 14px; /* Reducción de tamaño en botones */
     height: 48px;
@@ -219,10 +224,8 @@ mat-form-field {
    Ajustes adicionales para la vista móvil (≤ 700px)
    ========================= */
 @media (max-width: 700px) {
-
   .mat-form-field {
     width: 100% !important;
     margin-left: 0; /* Elimina el margen */
   }
-
 }

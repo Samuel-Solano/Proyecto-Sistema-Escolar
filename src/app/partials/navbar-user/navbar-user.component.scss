@@ -43,7 +43,7 @@
   margin-top: 56px;
   padding: 2rem 0 0 0;
   min-height: calc(100vh - 56px);
-  transition: margin 0.3s cubic-bezier(.4,0,.2,1);
+  transition: margin 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .scoop-side-navbar {
@@ -55,11 +55,12 @@
   z-index: 101;
   background: var(--sidebar-bg);
   color: #e4ecfa;
-  box-shadow: 2px 0 8px rgba(0,0,0,0.04);
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.04);
   padding-top: 2rem;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  //position: relative;
 }
 .scoop-navbar {
   position: fixed;
@@ -74,7 +75,7 @@
   justify-content: flex-start;
   background: var(--navbar-bg) !important;
   color: var(--text-main) !important;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
   position: fixed;
 }
 
@@ -87,7 +88,7 @@
   color: var(--text-main);
   margin-right: 2rem;
   letter-spacing: 2px;
-  font-family: 'NexaBold', 'Montserrat', 'Arial', sans-serif;
+  font-family: "NexaBold", "Montserrat", "Arial", sans-serif;
 }
 .scoop-navbar-icons {
   display: flex;
@@ -118,7 +119,7 @@
   background: #fff;
   color: #222;
   border-radius: 8px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
   min-width: 140px;
   padding: 0.5rem 0;
   z-index: 100;
@@ -221,7 +222,7 @@
   font-size: 1.3rem;
   margin-right: 1.5rem;
   cursor: pointer;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   transition: background 0.18s, color 0.18s;
   display: flex;
   align-items: center;
@@ -262,7 +263,7 @@
     top: 0;
     left: 0;
     z-index: 120;
-    box-shadow: 2px 0 16px rgba(0,0,0,0.18);
+    box-shadow: 2px 0 16px rgba(0, 0, 0, 0.18);
     padding-top: 1.5rem;
     background: var(--sidebar-bg);
     display: flex;
@@ -271,16 +272,15 @@
     transform: translateX(-100%) scale(0.98);
     opacity: 0;
     pointer-events: none;
-    transition:
-      transform 0.35s cubic-bezier(.4,0,.2,1),
-      opacity 0.25s cubic-bezier(.4,0,.2,1),
-      box-shadow 0.25s cubic-bezier(.4,0,.2,1);
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+      opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+      box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   }
   .scoop-side-navbar.mobile-open {
     transform: translateX(0) scale(1);
     opacity: 1;
     pointer-events: auto;
-    box-shadow: 4px 0 32px rgba(0,0,0,0.18);
+    box-shadow: 4px 0 32px rgba(0, 0, 0, 0.18);
   }
   .mobile-sidebar-overlay {
     position: fixed;
@@ -288,11 +288,10 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(0,0,0,0.25);
+    background: rgba(0, 0, 0, 0.25);
     z-index: 110;
-    transition:
-      opacity 0.3s cubic-bezier(.4,0,.2,1),
-      backdrop-filter 0.3s cubic-bezier(.4,0,.2,1);
+    transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+      backdrop-filter 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     opacity: 0;
     pointer-events: none;
     backdrop-filter: blur(0px);
@@ -310,7 +309,7 @@
     border-radius: 0;
     padding: 0 1rem;
     min-height: 56px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     left: 0;
   }
   .scoop-navbar-logo {
@@ -322,20 +321,20 @@
     width: 28px;
     height: 28px;
     font-size: 0.95rem;
-    box-shadow: 0 2px 8px rgba(66,133,244,0.10);
+    box-shadow: 0 2px 8px rgba(66, 133, 244, 0.1);
   }
   .scoop-user-menu {
     top: 34px;
     min-width: 120px;
     font-size: 0.95rem;
     border-radius: 8px;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
   }
 }
 
 // General polish for desktop
 .scoop-side-navbar {
-  box-shadow: 2px 0 16px rgba(0,0,0,0.10);
+  box-shadow: 2px 0 16px rgba(0, 0, 0, 0.1);
   padding-top: 2rem;
   gap: 0.5rem;
 }
@@ -350,4 +349,138 @@
   margin-top: 2rem;
   font-size: 1.08rem;
   padding: 1rem 1.2rem;
+}
+// =====================
+// DROPDOWN - EVENTOS ACADÉMICOS (CORREGIDO)
+// =====================
+
+.nav-item-wrapper {
+  /* Asegura que ocupe el ancho pero sin padding extra */
+  width: 100%;
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+.dropdown-container {
+  width: 100%;
+  /* Quitamos position relative complejo para que fluya natural */
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdown-toggle-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  /* Mismo padding que .scoop-navbar-item para alineación exacta */
+  padding: 1rem 1.2rem;
+  font-size: 1.08rem;
+  color: #e4ecfa;
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.18s, color 0.18s;
+  text-align: left;
+  font-family: inherit; /* Asegura que use la misma fuente */
+}
+
+.dropdown-toggle-btn .material-icons {
+  /* Mismo margen que tus otros items */
+  margin-right: 0.7rem;
+  font-size: 1.2em;
+  color: #b5c6e0;
+  transition: color 0.18s;
+}
+
+/* Efectos Hover y Active idénticos a los otros items */
+.dropdown-toggle-btn:hover,
+.dropdown-toggle-btn.active {
+  background: #30507a;
+  color: #fff;
+}
+
+.dropdown-toggle-btn:hover .material-icons,
+.dropdown-toggle-btn.active .material-icons {
+  color: #fff;
+}
+
+.dropdown-arrow {
+  margin-left: auto; /* Empuja la flecha a la derecha */
+  transition: transform 0.25s ease;
+  font-size: 1.2rem;
+}
+
+.dropdown-arrow.open {
+  transform: rotate(180deg);
+}
+
+/* EL CAMBIO IMPORTANTE: */
+.dropdown-menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  /* Position relative hace que empuje el contenido de abajo (Logout) */
+  position: relative;
+  width: 100%;
+  display: none;
+  /* Fondo ligeramente más oscuro para distinguir submenú */
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 0 0 8px 8px;
+  overflow: hidden;
+}
+
+.dropdown-menu.open {
+  display: block;
+  /* Animación simple de entrada */
+  animation: slideDown 0.2s ease-out forwards;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dropdown-link {
+  display: block;
+  /* Indentación mayor para que se vea jerárquico */
+  padding: 0.7rem 1rem 0.7rem 3.5rem;
+  color: #e4ecfa;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: all 0.18s;
+  position: relative;
+  border-left: 3px solid transparent; /* Indicador visual sutil */
+}
+
+.dropdown-link:hover,
+.dropdown-link.active {
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  border-left-color: #fff; /* Pequeño detalle visual */
+}
+
+/* Puntito decorativo opcional */
+.dropdown-link::before {
+  content: "";
+  position: absolute;
+  left: 2.2rem; /* Ajustado a la indentación */
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 4px;
+  background: #b5c6e0;
+  border-radius: 50%;
+  opacity: 0.7;
+}
+
+.dropdown-link:hover::before {
+  background: #fff;
+  opacity: 1;
 }

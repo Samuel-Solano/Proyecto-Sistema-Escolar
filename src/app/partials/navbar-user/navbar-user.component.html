@@ -47,14 +47,46 @@
         <span class="material-icons">bar_chart</span>
         <span>Gráficas</span>
       </li>
-      <li
-        *ngIf="canSeeStudentItems()"
-        routerLink="/eventos-academicos"
-        routerLinkActive="active"
-        class="scoop-navbar-item"
-      >
-        <span class="material-icons">event</span>
-        <span>Eventos Académicos</span>
+      <li *ngIf="canSeeStudentItems()" class="nav-item-wrapper">
+        <div class="dropdown-container">
+          <button
+            class="dropdown-toggle-btn"
+            [class.active]="isEventosDropdownOpen"
+            (click)="toggleEventosDropdown()"
+          >
+            <span class="material-icons">event</span>
+            <span>Eventos Académicos</span>
+            <span
+              class="material-icons dropdown-arrow"
+              [class.open]="isEventosDropdownOpen"
+              >expand_more</span
+            >
+          </button>
+
+          <ul class="dropdown-menu" [class.open]="isEventosDropdownOpen">
+            <li>
+              <a
+                *ngIf="isAdmin()"
+                routerLink="/registro-eventos-academicos"
+                routerLinkActive="active"
+                class="dropdown-link"
+                (click)="closeEventosDropdown()"
+              >
+                Registrar Evento
+              </a>
+            </li>
+            <li>
+              <a
+                routerLink="/eventos-academicos"
+                routerLinkActive="active"
+                class="dropdown-link"
+                (click)="closeEventosDropdown()"
+              >
+                Listar Eventos
+              </a>
+            </li>
+          </ul>
+        </div>
       </li>
     </ul>
     <button class="scoop-logout-btn" (click)="logout()">
@@ -146,15 +178,46 @@
           <span class="material-icons">bar_chart</span>
           <span>Gráficas</span>
         </li>
-        <li
-          *ngIf="canSeeTeacherItems()"
-          routerLink="/eventos-academicos"
-          routerLinkActive="active"
-          class="scoop-navbar-item"
-          (click)="closeSidebar()"
-        >
-          <span class="material-icons">event</span>
-          <span>Eventos Académicos</span>
+        <li *ngIf="canSeeStudentItems()" class="nav-item-wrapper">
+          <div class="dropdown-container">
+            <button
+              class="dropdown-toggle-btn"
+              [class.active]="isEventosDropdownOpen"
+              (click)="toggleEventosDropdown()"
+            >
+              <span class="material-icons">event</span>
+              <span>Eventos Académicos</span>
+              <span
+                class="material-icons dropdown-arrow"
+                [class.open]="isEventosDropdownOpen"
+                >expand_more</span
+              >
+            </button>
+
+            <ul class="dropdown-menu" [class.open]="isEventosDropdownOpen">
+              <li>
+                <a
+                  *ngIf="isAdmin()"
+                  routerLink="/registro-eventos-academicos"
+                  routerLinkActive="active"
+                  class="dropdown-link"
+                  (click)="closeEventosDropdown()"
+                >
+                  Registrar Evento
+                </a>
+              </li>
+              <li>
+                <a
+                  routerLink="/eventos-academicos"
+                  routerLinkActive="active"
+                  class="dropdown-link"
+                  (click)="closeEventosDropdown()"
+                >
+                  Listar Eventos
+                </a>
+              </li>
+            </ul>
+          </div>
         </li>
       </ul>
       <button class="scoop-logout-btn" (click)="logout(); closeSidebar()">

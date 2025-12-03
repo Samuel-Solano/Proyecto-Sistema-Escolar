@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import DatalabelsPlugin from 'chartjs-plugin-datalabels';
 import { AdministradoresService } from 'src/app/services/administradores.service';
+import { EventosAcademicosService } from 'src/app/services/eventos-academicos.service';
 
 @Component({
   selector: 'app-graficas-screen',
@@ -8,47 +9,37 @@ import { AdministradoresService } from 'src/app/services/administradores.service
   styleUrls: ['./graficas-screen.component.scss'],
 })
 export class GraficasScreenComponent implements OnInit {
-  //Agregar chartjs-plugin-datalabels
   //Variables
 
   public total_user: any = {};
+  public totalUsuarios: any = {};
+  public total_eventos: any = {};
+  public totalEventos: any = {};
 
   //Histograma
   lineChartData = {
-    labels: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+    labels: ['Talleres', 'Seminarios', 'Conferencias', 'Concursos'],
     datasets: [
       {
-        data: [89, 34, 43, 54, 28, 74, 93],
-        label: 'Registro de materias',
+        data: [] as number[],
+        label: 'Registro de Eventos',
         backgroundColor: '#F88406',
       },
     ],
   };
   lineChartOption = {
-    responsive: false,
+    responsive: true,
   };
   lineChartPlugins = [DatalabelsPlugin];
 
   //Barras
   barChartData = {
-    labels: [
-      'Congreso',
-      'FePro',
-      'Presentación Doctoral',
-      'Feria Matemáticas',
-      'T-System',
-    ],
+    labels: ['Talleres', 'Seminarios', 'Conferencias', 'Concursos'],
     datasets: [
       {
-        data: [34, 43, 54, 28, 74],
+        data: [] as number[],
         label: 'Eventos Académicos',
-        backgroundColor: [
-          '#F88406',
-          '#FCFF44',
-          '#82D3FB',
-          '#FB82F5',
-          '#2AD84A',
-        ],
+        backgroundColor: ['#F88406', '#FCFF44', '#82D3FB', '#FB82F5'],
       },
     ],
   };
@@ -59,23 +50,23 @@ export class GraficasScreenComponent implements OnInit {
 
   //Circular
   pieChartData = {
-    labels: ['Administradores', 'Maestros', 'Alumnos'],
+    labels: ['Administradores', 'Alumnos', 'Maestros'],
     datasets: [
       {
-        data: [89, 34, 43],
+        data: [] as number[],
         label: 'Registro de usuarios',
         backgroundColor: ['#FCFF44', '#F1C8F2', '#31E731'],
       },
     ],
   };
   pieChartOption = {
-    responsive: false,
+    responsive: true,
   };
   pieChartPlugins = [DatalabelsPlugin];
 
   // Doughnut
   doughnutChartData = {
-    labels: ['Administradores', 'Maestros', 'Alumnos'],
+    labels: ['Administradores', 'Alumnos', 'Maestros'],
     datasets: [
       {
         data: [] as number[],
@@ -85,14 +76,18 @@ export class GraficasScreenComponent implements OnInit {
     ],
   };
   doughnutChartOption = {
-    responsive: false,
+    responsive: true,
   };
   doughnutChartPlugins = [DatalabelsPlugin];
 
-  constructor(private administradoresServices: AdministradoresService) {}
+  constructor(
+    private administradoresServices: AdministradoresService,
+    private eventosService: EventosAcademicosService
+  ) {}
 
   ngOnInit(): void {
     this.obtenerTotalUsers();
+    this.obtenerTotalEventos();
   }
 
   // Función para obtener el total de usuarios registrados
@@ -101,21 +96,13 @@ export class GraficasScreenComponent implements OnInit {
       (response) => {
         this.total_user = response;
         console.log('Total usuarios: ', this.total_user);
-
-        const valores: number[] = [
+        this.totalUsuarios = [
           this.total_user.admins,
           this.total_user.alumnos,
           this.total_user.maestros,
         ];
-        this.doughnutChartData = {
-          ...this.doughnutChartData,
-          datasets: [
-            {
-              ...this.barChartData.datasets[0],
-              data: valores,
-            },
-          ],
-        };
+
+        this.graficaUsuarios();
       },
       (error) => {
         console.log('Error al obtener total de usuarios ', error);
@@ -123,5 +110,71 @@ export class GraficasScreenComponent implements OnInit {
         alert('No se pudo obtener el total de cada rol de usuarios');
       }
     );
+  }
+
+  public obtenerTotalEventos() {
+    this.eventosService.getTotalEventos().subscribe(
+      (response) => {
+        this.total_eventos = response;
+        console.log('Total eventos: ', this.total_eventos);
+
+        this.totalEventos = [
+          this.total_eventos.talleres,
+          this.total_eventos.seminarios,
+          this.total_eventos.conferencias,
+          this.total_eventos.concurso,
+        ];
+
+        this.graficaEventos();
+      },
+      (error) => {
+        console.log('Error al obtener total de eventos ', error);
+        alert('No se pudo obtener el total de eventos por tipo');
+      }
+    );
+  }
+
+  private graficaEventos(): void {
+    this.lineChartData = {
+      ...this.lineChartData,
+      datasets: [
+        {
+          ...this.lineChartData.datasets[0],
+          data: this.totalEventos,
+        },
+      ],
+    };
+
+    this.barChartData = {
+      ...this.barChartData,
+      datasets: [
+        {
+          ...this.barChartData.datasets[0],
+          data: this.totalEventos,
+        },
+      ],
+    };
+  }
+
+  private graficaUsuarios(): void {
+    this.doughnutChartData = {
+      ...this.doughnutChartData,
+      datasets: [
+        {
+          ...this.doughnutChartData.datasets[0],
+          data: this.totalUsuarios,
+        },
+      ],
+    };
+
+    this.pieChartData = {
+      ...this.pieChartData,
+      datasets: [
+        {
+          ...this.pieChartData.datasets[0],
+          data: this.totalUsuarios,
+        },
+      ],
+    };
   }
 }

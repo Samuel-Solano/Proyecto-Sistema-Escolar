@@ -27,6 +27,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSortModule } from '@angular/material/sort';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 // Paginación
 import {
@@ -38,6 +39,8 @@ import { getSpanishPaginatorIntl } from './shared/spanish-paginator-intl';
 
 // IMPORTANTE: añade el módulo de Sidenav
 import { MatSidenavModule } from '@angular/material/sidenav';
+//time-picker
+import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 
 //Ngx-cookie-service
 import { CookieService } from 'ngx-cookie-service';
@@ -53,6 +56,10 @@ import { SidebarComponent } from './partials/sidebar/sidebar.component';
 import { EliminarUserModalComponent } from './modals/eliminar-user-modal/eliminar-user-modal.component';
 import { GraficasScreenComponent } from './screens/graficas-screen/graficas-screen.component';
 import { NgChartsModule } from 'ng2-charts';
+import { EventosScreenComponent } from './screens/eventos-screen/eventos-screen.component';
+import { RegistroEventosAcademicosComponent } from './partials/registro-eventos-academicos/registro-eventos-academicos.component';
+import { EliminarEventosModalComponent } from './modals/eliminar-eventos-modal/eliminar-eventos-modal.component';
+import { EditarEventosModalComponent } from './modals/editar-eventos-modal/editar-eventos-modal.component';
 
 @NgModule({
   declarations: [
@@ -72,6 +79,10 @@ import { NgChartsModule } from 'ng2-charts';
     NavbarUserComponent,
     SidebarComponent,
     GraficasScreenComponent,
+    EventosScreenComponent,
+    RegistroEventosAcademicosComponent,
+    EliminarEventosModalComponent,
+    EditarEventosModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -95,6 +106,8 @@ import { NgChartsModule } from 'ng2-charts';
     MatDialogModule,
     MatSortModule,
     NgChartsModule,
+    MatExpansionModule,
+    NgxMaterialTimepickerModule,
   ],
   providers: [
     CookieService,

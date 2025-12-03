@@ -144,6 +144,7 @@ export class MaestrosScreenComponent implements OnInit {
       alert('No tienes permisos para eliminar este maestro.');
     }
   }
+
   public busquedaFiltro(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();

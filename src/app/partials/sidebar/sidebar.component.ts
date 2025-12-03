@@ -12,7 +12,10 @@ export class SidebarComponent implements OnInit {
   isMobileView = window.innerWidth < 900;
   userRole: string = '';
 
-  constructor(private router: Router, private facadeService: FacadeService) {}
+  constructor(private router: Router, private facadeService: FacadeService) {
+    // Obtenemos el rol del usuario
+    this.userRole = this.facadeService.getUserGroup();
+  }
 
   ngOnInit(): void {
     this.userRole = this.facadeService.getUserGroup();

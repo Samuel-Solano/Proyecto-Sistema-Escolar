@@ -14,6 +14,8 @@ export class NavbarUserComponent implements OnInit {
   public showUserMenu: boolean = false;
   public mobileOpen: boolean = false;
   public userRole: string = '';
+  isNearBottom = false;
+  isEventosDropdownOpen = false;
 
   // Estas variables se utilizarán por si se habilita el tema oscuro
   paletteMode: 'light' | 'dark' = 'light';
@@ -42,6 +44,24 @@ export class NavbarUserComponent implements OnInit {
     Object.keys(palette).forEach((key) => {
       document.documentElement.style.setProperty(key, palette[key]);
     });
+  }
+  toggleEventosDropdown() {
+    this.isEventosDropdownOpen = !this.isEventosDropdownOpen;
+    // Detectar si el dropdown está cerca del final del sidebar
+    this.checkIfNearBottom();
+  }
+  closeEventosDropdown() {
+    this.isEventosDropdownOpen = false;
+  }
+  checkIfNearBottom() {
+    const dropdownElement = document.querySelector(
+      '.dropdown-menu'
+    ) as HTMLElement;
+    if (dropdownElement) {
+      const rect = dropdownElement.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      this.isNearBottom = rect.bottom > windowHeight - 100; // Si está a menos de 100px del borde inferior
+    }
   }
 
   constructor(private router: Router, private facadeService: FacadeService) {

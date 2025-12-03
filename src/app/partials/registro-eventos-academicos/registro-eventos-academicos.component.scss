@@ -1,0 +1,244 @@
+/* Wrapper principal: Mantiene el fondo blanco y la alineación */
+.wrapper {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  background-color: #fff;
+  padding-bottom: 50px; /* Espacio al final para scroll */
+}
+
+/* Sección contenedora */
+.section-registro {
+  width: 100%; /* Ocupa todo el ancho disponible del router-outlet */
+  max-width: 1100px; /* Límite para pantallas muy anchas */
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+/* Cuerpo del formulario */
+.body-registro {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding-top: 2.5rem;
+  gap: 1.5rem; /* Reduje un poco el gap para que no se vea tan separado */
+  background: #fff;
+}
+
+/* =========================
+   Tipografía y Títulos
+   ========================= */
+
+.title-user {
+  font-size: 28px;
+  text-align: left;
+  font-family: "Nexa-Bold", sans-serif; /* Fallback a sans-serif si no carga Nexa */
+  letter-spacing: 2px;
+  color: #231f20;
+  text-transform: capitalize;
+  opacity: 1;
+  width: 90%;
+  margin-left: 5%;
+  margin-bottom: 1rem;
+}
+
+.title-materias {
+  font-size: 16px;
+  text-align: left;
+  font-family: "Nexa", sans-serif;
+  letter-spacing: 1px;
+  color: #231f20;
+  opacity: 1;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+/* =========================
+   Inputs y Formularios
+   ========================= */
+
+/* Estilo base para todos los mat-form-field */
+mat-form-field {
+  width: 90% !important;
+  margin-left: 5%;
+  font-size: 16px; /* Texto legible */
+}
+
+/* AJUSTE ESPECIAL PARA LAS HORAS (Grid System) */
+/* Como las horas están dentro de un 'row' de Bootstrap,
+   necesitamos quitar el margen izquierdo individual para que
+   el grid se encargue del espaciado.
+*/
+.row {
+  width: 90%;
+  margin-left: 5%; /* El row entero se alinea al 5% */
+  margin-right: 0;
+
+  mat-form-field {
+    width: 100% !important; /* Dentro de la columna ocupa el 100% */
+    margin-left: 0 !important; /* Reseteamos el margen */
+  }
+}
+
+/* Textarea con límites de altura */
+textarea {
+  min-height: 80px; /* Altura mínima inicial */
+  max-height: 200px; /* Límite máximo para que no rompa el diseño */
+  resize: vertical; /* Solo permite estirar verticalmente */
+}
+
+/* =========================
+   Checkboxes (Estilo Personalizado Azul)
+   ========================= */
+
+.select-materias {
+  width: 90%;
+  margin-left: 5%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.checkbox-group {
+  display: flex;
+  align-items: center;
+}
+
+.d-checkbox-nombre {
+  margin-left: 10px;
+  font-size: 1rem;
+  color: #231f20;
+  font-family: "Nexa", sans-serif;
+}
+
+/* Sobrescritura profunda para colores de Angular Material (Tu azul #0092b8) */
+::ng-deep .mat-mdc-checkbox.mat-mdc-checkbox-checked .mdc-checkbox__background,
+::ng-deep .mat-mdc-checkbox.mat-mdc-checkbox-checked .mdc-checkbox__ripple {
+  background-color: #0092b8 !important;
+  border-color: #0092b8 !important;
+}
+
+::ng-deep .mat-mdc-checkbox:focus .mdc-checkbox__background {
+  border-color: #1565c0 !important;
+}
+
+::ng-deep .mat-mdc-checkbox .mdc-checkbox__ripple {
+  transform: scale(1.1);
+}
+
+/* =========================
+   Botones (Tu estilo azul sólido)
+   ========================= */
+
+.section-buttons {
+  width: 90%;
+  margin-left: 5%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end; /* Botones a la derecha es estándar UX */
+  gap: 20px; /* Espacio entre botones */
+  padding-bottom: 3rem;
+  margin-top: 20px;
+}
+
+.btn-primary {
+  width: 200px;
+  height: 48px;
+  background-color: #0092b8 !important;
+  border-color: #0092b8 !important;
+  border-radius: 8px !important;
+  font-family: "Nexa-Bold", sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: #017895 !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 146, 184, 0.3);
+  }
+}
+
+.btn-danger {
+  width: 200px;
+  height: 48px;
+  background-color: transparent !important; /* Estilo 'Outline' para cancelar se ve elegante */
+  border: 2px solid #dc3545 !important;
+  border-radius: 8px !important;
+  font-family: "Nexa-Bold", sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  color: #dc3545 !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: #dc3545 !important;
+    color: #fff !important;
+  }
+}
+
+/* =========================
+   Responsive Design (Móvil y Tablet)
+   ========================= */
+
+@media (max-width: 768px) {
+  /* Ajuste de contenedor */
+  .section-registro {
+    width: 100%;
+  }
+
+  /* Títulos más pequeños */
+  .title-user {
+    font-size: 22px;
+    text-align: center;
+    width: 100%;
+    margin-left: 0;
+    white-space: normal;
+  }
+
+  /* Inputs al 100% (menos márgenes laterales en móvil se ve mejor) */
+  mat-form-field {
+    width: 90% !important; /* Mantenemos el 90% para margen visual */
+    margin-left: 5%;
+  }
+
+  /* Las filas de bootstrap se hacen columna automáticamente,
+     pero ajustamos márgenes */
+  .row {
+    width: 100%;
+    margin-left: 0;
+    padding: 0 5%; /* Padding interno en lugar de margen */
+  }
+
+  /* Botones en columna y ancho completo */
+  .section-buttons {
+    flex-direction: column-reverse; /* Registrar arriba, Cancelar abajo */
+    gap: 15px;
+    width: 90%;
+    margin-left: 5%;
+  }
+
+  .btn-primary,
+  .btn-danger {
+    width: 100%;
+  }
+
+  .title-materias {
+    text-align: center;
+  }
+}
