@@ -68,7 +68,7 @@ export class EventosAcademicosService {
       if (fechaIngresada < hoy) {
         const msg = 'No se pueden seleccionar fechas anteriores al día actual.';
         error['fecha'] = msg;
-        alert(msg); // Aquí sale la alerta visual
+        alert(msg);
       }
     }
 
@@ -81,7 +81,7 @@ export class EventosAcademicosService {
       if (dateInicio >= dateFin) {
         const msg = 'La hora de fin debe ser posterior a la hora de inicio.';
         error['hora_fin'] = msg;
-        alert(msg); // Aquí sale la alerta visual
+        alert(msg);
       }
     } else {
       if (!data['hora_inicio']) error['hora_inicio'] = 'Hora inicio requerida';

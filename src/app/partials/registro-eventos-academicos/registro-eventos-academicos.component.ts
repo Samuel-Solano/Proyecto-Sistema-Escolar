@@ -252,8 +252,6 @@ export class RegistroEventosAcademicosComponent implements OnInit {
       return;
     }
 
-    // Solo aplico el parche si responsable es un string (nombre),
-    // si ya es número (id), no toco nada
     if (typeof this.evento.responsable !== 'string') {
       return;
     }

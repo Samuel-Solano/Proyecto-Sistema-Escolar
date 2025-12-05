@@ -129,7 +129,7 @@ export class EventosScreenComponent implements OnInit {
   }
 
   public goEditar(idEvento: number) {
-    // Solo admins pueden editar (según tu PDF)
+    // Solo admins pueden editar
     if (this.rol === 'administrador') {
       this.router.navigate(['registro-eventos-academicos/' + idEvento]);
     } else {
@@ -165,7 +165,7 @@ export class EventosScreenComponent implements OnInit {
   }
 }
 
-// Interfaz al final, igual que en Maestros
+// Interfaz al final
 export interface DatosEvento {
   id: number;
   nombre_evento: string;
