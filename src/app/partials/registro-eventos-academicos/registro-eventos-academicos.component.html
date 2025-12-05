@@ -12,7 +12,7 @@
         <input
           matInput
           maxlength="40"
-          (keypress)="soloLetras($event)"
+          (keypress)="soloAlfanumericos($event)"
           [(ngModel)]="evento.nombre_evento"
           name="nombre_evento"
           placeholder="Escriba el nombre del evento"
@@ -205,6 +205,7 @@
         <textarea
           matInput
           rows="4"
+          (keypress)="soloAlfanumericos($event)"
           maxlength="300"
           [(ngModel)]="evento.descripcion"
           name="descripcion"

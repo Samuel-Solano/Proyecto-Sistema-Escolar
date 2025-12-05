@@ -18,7 +18,7 @@ const user_id_cookie_name = 'dev-sistema-escolar-user_id';
 const user_complete_name_cookie_name = 'dev-sistema-escolar-user_complete_name';
 const group_name_cookie_name = 'dev-sistema-escolar-group_name';
 const codigo_cookie_name = 'dev-sistema-escolar-codigo';
-
+const COOKIE_PATH = '/';
 @Injectable({
   providedIn: 'root',
 })
@@ -106,18 +106,19 @@ export class FacadeService {
   }
 
   saveUserData(user_data: any) {
-    var secure = environment.url_api.indexOf('https') !== -1;
+    const secure = environment.url_api.indexOf('https') !== -1;
     // Soporta respuesta plana o anidada en 'user'
     let id = user_data.id || user_data.user?.id;
     let email = user_data.email || user_data.user?.email;
     let first_name = user_data.first_name || user_data.user?.first_name || '';
     let last_name = user_data.last_name || user_data.user?.last_name || '';
     let name = (first_name + ' ' + last_name).trim();
+    let rol = user_data.rol;
     this.cookieService.set(
       user_id_cookie_name,
       id,
       undefined,
-      undefined,
+      COOKIE_PATH,
       undefined,
       secure,
       secure ? 'None' : 'Lax'
@@ -126,7 +127,7 @@ export class FacadeService {
       user_email_cookie_name,
       email,
       undefined,
-      undefined,
+      COOKIE_PATH,
       undefined,
       secure,
       secure ? 'None' : 'Lax'
@@ -135,7 +136,7 @@ export class FacadeService {
       user_complete_name_cookie_name,
       name,
       undefined,
-      undefined,
+      COOKIE_PATH,
       undefined,
       secure,
       secure ? 'None' : 'Lax'
@@ -144,7 +145,7 @@ export class FacadeService {
       session_cookie_name,
       user_data.token,
       undefined,
-      undefined,
+      COOKIE_PATH,
       undefined,
       secure,
       secure ? 'None' : 'Lax'
@@ -153,7 +154,7 @@ export class FacadeService {
       group_name_cookie_name,
       user_data.rol,
       undefined,
-      undefined,
+      COOKIE_PATH,
       undefined,
       secure,
       secure ? 'None' : 'Lax'
@@ -181,6 +182,8 @@ export class FacadeService {
   }
 
   getUserGroup() {
-    return this.cookieService.get(group_name_cookie_name);
+    const rol = this.cookieService.get(group_name_cookie_name);
+    console.log('getUserGroup →', rol);
+    return rol;
   }
 }

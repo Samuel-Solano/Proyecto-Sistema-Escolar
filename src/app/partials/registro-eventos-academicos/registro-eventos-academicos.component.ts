@@ -109,7 +109,8 @@ export class RegistroEventosAcademicosComponent implements OnInit {
     if (
       !(charCode >= 65 && charCode <= 90) && // Letras mayúsculas (A-Z)
       !(charCode >= 97 && charCode <= 122) && // Letras minúsculas (a-z)
-      !(charCode >= 48 && charCode <= 57) // Números (0-9)
+      !(charCode >= 48 && charCode <= 57) && // Números (0-9)
+      charCode !== 32 // Espacio
     ) {
       event.preventDefault(); // Bloquea cualquier otro caracter
     }
@@ -163,7 +164,7 @@ export class RegistroEventosAcademicosComponent implements OnInit {
       this.editar
     );
     if (Object.keys(this.errors).length > 0) {
-      return false;
+      return;
     }
     this.eventosAcademicosService.registrarEvento(this.evento).subscribe(
       (response) => {

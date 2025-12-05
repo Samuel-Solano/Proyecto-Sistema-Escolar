@@ -70,7 +70,7 @@
                 routerLink="/registro-eventos-academicos"
                 routerLinkActive="active"
                 class="dropdown-link"
-                (click)="closeEventosDropdown()"
+                (click)="closeEventosDropdown(); closeSidebar()"
               >
                 Registrar Evento
               </a>
@@ -80,7 +80,7 @@
                 routerLink="/eventos-academicos"
                 routerLinkActive="active"
                 class="dropdown-link"
-                (click)="closeEventosDropdown()"
+                (click)="closeEventosDropdown(); closeSidebar()"
               >
                 Listar Eventos
               </a>
@@ -201,7 +201,7 @@
                   routerLink="/registro-eventos-academicos"
                   routerLinkActive="active"
                   class="dropdown-link"
-                  (click)="closeEventosDropdown()"
+                  (click)="closeEventosDropdown(); closeSidebar()"
                 >
                   Registrar Evento
                 </a>
@@ -211,7 +211,7 @@
                   routerLink="/eventos-academicos"
                   routerLinkActive="active"
                   class="dropdown-link"
-                  (click)="closeEventosDropdown()"
+                  (click)="closeEventosDropdown(); closeSidebar()"
                 >
                   Listar Eventos
                 </a>

@@ -54,49 +54,38 @@ export class EventosAcademicosService {
       error['tipo_evento'] = 'Selecciona el tipo de evento.';
     }
 
-    // Validar Fecha
+    // 1. Validar Fecha
     if (!this.validatorService.required(data['fecha'])) {
       error['fecha'] = 'La fecha es obligatoria.';
     } else {
-      const v = data['fecha'];
-      const esFechaValida =
-        v instanceof Date || (typeof v === 'string' && !isNaN(Date.parse(v)));
+      const fechaIngresada = new Date(data['fecha']);
+      const hoy = new Date();
 
-      if (!esFechaValida) {
-        error['fecha'] = 'La fecha no es válida.';
-      } else {
-        const fechaIngresada = new Date(v);
-        // Ajuste de zona horaria para evitar errores de "un día antes"
-        fechaIngresada.setHours(0, 0, 0, 0);
+      // Ajustamos ambas fechas a las 00:00:00 para comparar solo el día
+      fechaIngresada.setHours(0, 0, 0, 0);
+      hoy.setHours(0, 0, 0, 0);
 
-        const hoy = new Date();
-        hoy.setHours(0, 0, 0, 0);
-
-        if (fechaIngresada < hoy) {
-          error['fecha'] =
-            'No se pueden seleccionar fechas anteriores al día actual.';
-        }
+      if (fechaIngresada < hoy) {
+        const msg = 'No se pueden seleccionar fechas anteriores al día actual.';
+        error['fecha'] = msg;
+        alert(msg); // Aquí sale la alerta visual
       }
     }
 
-    // Validar Horas
-    if (
-      this.validatorService.required(data['hora_inicio']) &&
-      this.validatorService.required(data['hora_fin'])
-    ) {
-      const inicio = data['hora_inicio'];
-      const fin = data['hora_fin'];
-      const fechaBase = '2000-01-01';
-      const dateInicio = new Date(`${fechaBase}T${inicio}:00`);
-      const dateFin = new Date(`${fechaBase}T${fin}:00`);
+    // 2. Validar Horas
+    if (data['hora_inicio'] && data['hora_fin']) {
+      const fechaBase = '2000-01-01'; // Fecha arbitraria para comparar horas
+      const dateInicio = new Date(`${fechaBase}T${data['hora_inicio']}`);
+      const dateFin = new Date(`${fechaBase}T${data['hora_fin']}`);
 
       if (dateInicio >= dateFin) {
-        error['hora_fin'] =
-          'La hora de fin debe ser posterior a la hora de inicio.';
+        const msg = 'La hora de fin debe ser posterior a la hora de inicio.';
+        error['hora_fin'] = msg;
+        alert(msg); // Aquí sale la alerta visual
       }
     } else {
-      if (!data['hora_inicio']) error['hora_inicio'] = 'Campo requerido';
-      if (!data['hora_fin']) error['hora_fin'] = 'Campo requerido';
+      if (!data['hora_inicio']) error['hora_inicio'] = 'Hora inicio requerida';
+      if (!data['hora_fin']) error['hora_fin'] = 'Hora fin requerida';
     }
 
     // Validar Lugar

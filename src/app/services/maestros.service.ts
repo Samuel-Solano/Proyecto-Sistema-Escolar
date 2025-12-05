@@ -80,13 +80,43 @@ export class MaestrosService {
       }
     }
 
+    // fecha_nacimiento
     if (this.validatorService.required(data['fecha_nacimiento'])) {
       const v = data['fecha_nacimiento'];
+
       const esValida =
         v instanceof Date ||
-        (typeof v === 'string' && /^\d{4}-\d{2}-\d{2}/.test(v));
+        (typeof v === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(v));
+
       if (!esValida) {
         error['fecha_nacimiento'] = 'Formato de fecha inválido (YYYY-MM-DD)';
+      } else {
+        // --- calcular edad ---
+        let fechaNac: Date;
+
+        if (v instanceof Date) {
+          // quitamos hora/minutos por si acaso
+          fechaNac = new Date(v.getFullYear(), v.getMonth(), v.getDate());
+        } else {
+          const [year, month, day] = v.split('-').map(Number);
+          fechaNac = new Date(year, month - 1, day);
+        }
+
+        const hoy = new Date();
+        let edad = hoy.getFullYear() - fechaNac.getFullYear();
+        const mes = hoy.getMonth() - fechaNac.getMonth();
+
+        if (mes < 0 || (mes === 0 && hoy.getDate() < fechaNac.getDate())) {
+          edad--;
+        }
+
+        if (edad < 18) {
+          error['fecha_nacimiento'] =
+            'No se puede seleccionar una fecha de nacimiento menor a 18 años.';
+          alert(
+            'No se puede seleccionar una fecha de nacimiento menor a 18 años.'
+          );
+        }
       }
     }
 

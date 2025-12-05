@@ -73,16 +73,29 @@
         </li>
 
         <!-- Eventos Académicos - Available for administrators and teachers -->
-        <li
-          *ngIf="canSeeTeacherItems()"
-          routerLink="/eventos-academicos"
-          routerLinkActive="active"
-          class="eventos-academicos"
-          (click)="closeSidebar()"
-        >
-          <mat-icon>event</mat-icon>
-          <span>Eventos Académicos</span>
-        </li>
+        <ul class="dropdown-menu" [class.open]="isEventosDropdownOpen">
+          <li>
+            <a
+              *ngIf="isAdmin()"
+              routerLink="/registro-eventos-academicos"
+              routerLinkActive="active"
+              class="dropdown-link"
+              (click)="closeEventosDropdown()"
+            >
+              Registrar Evento
+            </a>
+          </li>
+          <li>
+            <a
+              routerLink="/eventos-academicos"
+              routerLinkActive="active"
+              class="dropdown-link"
+              (click)="closeEventosDropdown()"
+            >
+              Listar Eventos
+            </a>
+          </li>
+        </ul>
       </ul>
       <button
         mat-flat-button

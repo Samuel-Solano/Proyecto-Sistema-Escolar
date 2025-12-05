@@ -11,6 +11,9 @@ export class SidebarComponent implements OnInit {
   mobileOpen = false;
   isMobileView = window.innerWidth < 900;
   userRole: string = '';
+  isNearBottom = false;
+  isEventosDropdownOpen = false;
+  public expandedMenu: string | null = null;
 
   constructor(private router: Router, private facadeService: FacadeService) {
     // Obtenemos el rol del usuario
@@ -20,6 +23,30 @@ export class SidebarComponent implements OnInit {
   ngOnInit(): void {
     this.userRole = this.facadeService.getUserGroup();
     console.log('User role in sidebar:', this.userRole);
+  }
+  toggleEventosDropdown() {
+    this.isEventosDropdownOpen = !this.isEventosDropdownOpen;
+    // Detectar si el dropdown está cerca del final del sidebar
+    this.checkIfNearBottom();
+  }
+
+  closeEventosDropdown() {
+    this.isEventosDropdownOpen = false;
+  }
+
+  closeMenu() {
+    this.expandedMenu = null;
+  }
+
+  checkIfNearBottom() {
+    const dropdownElement = document.querySelector(
+      '.dropdown-menu'
+    ) as HTMLElement;
+    if (dropdownElement) {
+      const rect = dropdownElement.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      this.isNearBottom = rect.bottom > windowHeight - 100; // Si está a menos de 100px del borde inferior
+    }
   }
 
   @HostListener('window:resize')
