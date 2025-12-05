@@ -27,6 +27,7 @@
                   <mat-label>Buscar Eventos</mat-label>
                   <input
                     matInput
+                    (keypress)="soloLetras($event)"
                     (keyup)="busquedaFiltro($event)"
                     placeholder="Escribe un nombre"
                     #input

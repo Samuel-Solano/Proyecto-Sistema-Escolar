@@ -71,7 +71,17 @@ export class EventosScreenComponent implements OnInit {
     //Obetner Eventos
     this.obtenerEventos();
   }
-
+  public soloLetras(event: KeyboardEvent) {
+    const charCode = event.key.charCodeAt(0);
+    // Permitir solo letras (mayúsculas y minúsculas) y espacio
+    if (
+      !(charCode >= 65 && charCode <= 90) && // Letras mayúsculas
+      !(charCode >= 97 && charCode <= 122) && // Letras minúsculas
+      charCode !== 32 // Espacio
+    ) {
+      event.preventDefault();
+    }
+  }
   // Consumimos el servicio para obtener los eventos
   public obtenerEventos() {
     this.eventosService.obtenerListaEventos().subscribe(
