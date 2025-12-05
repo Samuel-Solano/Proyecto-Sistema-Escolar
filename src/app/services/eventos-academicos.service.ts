@@ -121,6 +121,14 @@ export class EventosAcademicosService {
     if (!data['responsable']) {
       error['responsable'] = 'El responsable es obligatorio.';
     }
+    if (!this.validatorService.required(data['cupo'])) {
+      error['cupo'] = 'El cupo es obligatorio.';
+    } else if (parseInt(data['cupo']) > 99) {
+      error['cupo'] = 'El cupo no puede exceder los 2 dígitos (máximo 99).';
+      alert('El cupo no puede ser mayor a 99.');
+    } else if (parseInt(data['cupo']) <= 0) {
+      error['cupo'] = 'El cupo debe ser mayor a 0.';
+    }
 
     return error;
   }
