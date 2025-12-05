@@ -135,7 +135,7 @@ export class AdministradoresService {
     } else {
       headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     }
-    return this.http.post<any>(`${environment.url_api}/admin/`, data, {
+    return this.http.post<any>(`${environment.url_api}/admins/`, data, {
       headers,
     });
   }
@@ -171,7 +171,7 @@ export class AdministradoresService {
       headers = new HttpHeaders({ 'Content-Type': 'application/json' });
       console.log('No se encontró el token del usuario');
     }
-    return this.http.get<any>(`${environment.url_api}/admin/?id=${idAdmin}`, {
+    return this.http.get<any>(`${environment.url_api}/admins/?id=${idAdmin}`, {
       headers,
     });
   }
@@ -188,7 +188,7 @@ export class AdministradoresService {
       headers = new HttpHeaders({ 'Content-Type': 'application/json' });
       console.log('No se encontró el token del usuario');
     }
-    return this.http.put<any>(`${environment.url_api}/admin/`, data, {
+    return this.http.put<any>(`${environment.url_api}/admins/`, data, {
       headers,
     });
   }
@@ -207,7 +207,7 @@ export class AdministradoresService {
       console.log('No se encontró el token del usuario');
     }
     return this.http.delete<any>(
-      `${environment.url_api}/admin/?id=${idAdmin}`,
+      `${environment.url_api}/admins/?id=${idAdmin}`,
       { headers }
     );
   }
