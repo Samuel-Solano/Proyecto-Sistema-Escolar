@@ -76,7 +76,7 @@ export class RegistroEventosAcademicosComponent implements OnInit {
           );
 
           if (responsableEncontrado) {
-            this.evento.responsable = responsableEncontrado.user.id; // ahora es número
+            this.evento.responsable = responsableEncontrado.user.id;
           }
           console.log('Evento cargado', this.evento);
         },
